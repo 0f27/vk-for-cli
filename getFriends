@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# to get vk target's friends data
+# use vk user id as a target
+targetid=$1;
+api=https://api.vk.com/method;
+curl -s "$api/users.get?user_ids=$(curl -s $api/friends.get?user_id=$targetid | sed -r 's/[^0-9]+/,/g;s/,$|^,//g')&fields=sex,bdate,contacts"

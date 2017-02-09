@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# use your account data to get
+# authentication token
+id=$1
+pw=$2
+sc=''
+    curl -s "http://oauth.vk.com/oauth/authorize?"\
+            "redirect_uri=http://oauth.vk.com/blank.html&response_type=token&"\
+            "client_id=$id&scope=$sc&display=wap"

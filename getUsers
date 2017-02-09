@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# to get vk users's data
+# use vk user ids as a target
+# you can use several, separated with commas
+targetid=$1;
+api=https://api.vk.com/method;
+curl -s "$api/users.get?user_id=$targetid&fields=sex,bdate,contacts"
