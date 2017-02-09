@@ -3,4 +3,4 @@
 # to get 100 newest wall posts
 targetid=$1;
 api=https://api.vk.com/method;
-curl -s "$api/wall.get?owner_id=$targetid&count=100"
+curl -s "$api/wall.get?owner_id=$targetid&count=100&fields=likes_count"
