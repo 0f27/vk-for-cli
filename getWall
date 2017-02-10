@@ -2,5 +2,6 @@
 # use user or group id as 1-st parameter
 # to get 100 newest wall posts
 targetid=$1;
+fields=$2;
 api=https://api.vk.com/method;
-curl -s "$api/wall.get?owner_id=$targetid&count=100&fields=likes_count"
+curl -s "$api/wall.get?owner_id=$targetid&count=100&fields=$fields"
