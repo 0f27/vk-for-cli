@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # use your account data to get
 # authentication token
+#
+# still under construction
 id=4603710;
-curl -s "http://oauth.vk.com/oauth/authorize?redirect_uri=http://oauth.vk.com/blank.html&response_type=token&client_id="$id"&scope=friends&display=wap"
+curl -s "http://oauth.vk.com/oauth/authorize?redirect_uri=http://oauth.vk.com/blank.html&response_type=token&client_id="$id"&scope=friends&display=wap" | grep -oE 'to\=[a-zA-Z0-9]+' | sort | uniq | sed 's/to=//g'
