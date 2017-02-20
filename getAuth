@@ -5,11 +5,15 @@ username=$1
 password=$2
 client_id=5491940
 
-response=$(curl --cookie-jar vk.txt "https://oauth.vk.com/authorize" --data "client_id=$client_id&redirect_uri=https://oauth.vk.com/blank.html&display=mobile&scope=video,audio&response_type=token&v=5.44&revoke=1")
-echo "response is $response"
-echo "================================================================="
-response=$(curl --request POST --cookie vk.txt "https://login.vk.com/?act=login&soft=1&utf8=1" --data-urlencode "_origin=https://oauth.vk.com&ip_h=<some_value>&lg_h=<some_value>&to=<some_value>&email=<my_email>&pass=<my_pass>")
-echo "response is $response"
-echo "================================================================="
+response=$(curl -s "http://oauth.vk.com/oauth/authorize?redirect_uri=http://oauth.vk.com/blank.html&response_type=token&client_id="$client_id"&scope=friends&display=wap")
+echo to: $response | grep -oE 'to\=[a-zA-Z0-9]+' | sort | uniq | sed 's/to=//g
 
-exit 0
+
+#response=$(curl --cookie-jar vk.txt "https://oauth.vk.com/authorize" --data "client_id=$client_id&redirect_uri=https://oauth.vk.com/blank.html&display=mobile&scope=video,audio&response_type=token&v=5.44&revoke=1")
+#echo "response is $response"
+#echo "================================================================="
+#response=$(curl --request POST --cookie vk.txt "https://login.vk.com/?act=login&soft=1&utf8=1" --data-urlencode "_origin=https://oauth.vk.com&ip_h=<some_value>&lg_h=<some_value>&to=<some_value>&email=<my_email>&pass=<my_pass>")
+#echo "response is $response"
+#echo "================================================================="
+#
+#exit 0
