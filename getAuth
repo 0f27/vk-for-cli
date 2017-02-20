@@ -3,7 +3,7 @@
 #
 username=$1
 password=$2
-client_id=4603710
+client_id=5491940
 
 response=$(curl --cookie-jar vk.txt "https://oauth.vk.com/authorize" --data "client_id=$client_id&redirect_uri=https://oauth.vk.com/blank.html&display=mobile&scope=video,audio&response_type=token&v=5.44&revoke=1")
 echo "response is $response"
