@@ -5,4 +5,4 @@
 targetid=$1;
 fields=$2
 api=https://api.vk.com/method;
-curl -s "$api/users.get?user_id=$targetid&fields=$fields"
+curl -s "$api/users.get?user_ids=$targetid&fields=$fields"
