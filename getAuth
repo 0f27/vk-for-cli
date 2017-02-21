@@ -3,13 +3,11 @@
 #
 username=$1
 password=$2
-client_id=5491940
 
-curl -s "http://oauth.vk.com/oauth/authorize?redirect_uri=http://oauth.vk.com/blank.html&response_type=token&client_id=5491940&scope=friends,wall,audio,video&display=wap" | grep input
-
-response=$(curl -s "http://oauth.vk.com/oauth/authorize?redirect_uri=http://oauth.vk.com/blank.html&response_type=token&client_id="$client_id"&scope=friends&display=wap")
-echo $response | grep -oE 'to\=[a-zA-Z0-9]+' | sort | uniq | sed 's/to=//g'
-echo $response | grep -oE '\<input\ type\=\"hidden\"\ name\=\"lg_h\"\ value\=\"\w+'
+response=$(curl -s "http://oauth.vk.com/oauth/authorize?redirect_uri=http://oauth.vk.com/blank.html&response_type=token&client_id=5491940&scope=friends,wall,audio,video&display=wap" | grep input)
+#echo $response
+echo $response | grep -oE 'to\=[a-zA-Z0-9]+' | sort | uniq | sed 's/to=//g')
+#echo $response | grep -oE '\<input\ type\=\"hidden\"\ name\=\"lg_h\"\ value\=\"\w+'
 # echo $response | awk '/lg_h/{print}'
 
 
