@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# use user id as a target
+# returns 2-column comma-separated id and registration date/time of target's friends
+#
+id=$1
+echo id,registered
+
+for i in $(curl -s "https://api.vk.com/method/friends.get?user_id=$id" | tr -d '\[\]\}\{|\"response\"\:' |sed 's/,/\n/g')
+    do
+        echo $i,$(curl -s http://vk.com/foaf.php?id=$i | grep created | cut -d'"' -f2);
+    done
+
