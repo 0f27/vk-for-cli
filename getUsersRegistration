@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# use user id or ids separated with comma as a target
+# returns 2-column comma-separated id and registration date/time of the target
+#
+id="$1"
+echo id,registered
+
+for i in $(echo $id | awk -F, 'BEGIN {OFS="\n"} {print}')
+    do
+        echo $i,$(curl -s http://vk.com/foaf.php?id=$i | grep created | cut -d'"' -f2)
+    done
+
